@@ -4,10 +4,13 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const serveStatic = require('serve-static');
+const helmet = require('helmet');
 
 const app = express();
 
 //require('./config/mongoose');
+
+app.use(helmet());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
