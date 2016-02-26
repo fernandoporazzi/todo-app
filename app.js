@@ -8,7 +8,7 @@ const helmet = require('helmet');
 
 const app = express();
 
-//require('./config/mongoose');
+require('./config/mongoose');
 
 app.use(helmet());
 
