@@ -1,0 +1,39 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "Todo application powered by Node, Express, Mongo and React.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandoporazzi/todo-app.git"
+  },
+  "keywords": [
+    "node",
+    "react",
+    "mongo",
+    "express",
+    "todo",
+    "app"
+  ],
+  "author": "Fernando Porazzi <fernandoporazzi@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernandoporazzi/todo-app/issues"
+  },
+  "homepage": "https://github.com/fernandoporazzi/todo-app#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "mongoose": "^4.4.5",
+    "serve-static": "^1.10.2",
+    "winston": "^2.2.0"
+  },
+  "engines": {
+    "node": "5.7.x"
+  }
+}
