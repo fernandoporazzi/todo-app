@@ -8,6 +8,10 @@ var ItemSchema = new Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: false
+  },
   created_at: {
     type: Date,
     default: Date.now,
