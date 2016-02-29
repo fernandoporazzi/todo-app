@@ -1,4 +1,7 @@
 import React from 'react';
+import Header from './Header';
+import TodoList from './TodoList';
+import Footer from './Footer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -7,7 +10,11 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <h1>Hello world!</h1>
+      <div>
+        <Header />
+        <TodoList />
+        <Footer />
+      </div>
     );
   }
 }
