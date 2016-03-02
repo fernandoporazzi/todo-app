@@ -1,4 +1,5 @@
 import React from 'react';
+import CircularProgress from './CircularProgress'
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <header className="header section">
-        hi hi
+        <CircularProgress strokeWidth="4" radius="55" percentage="30" />
       </header>
     );
   }
