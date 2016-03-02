@@ -10,9 +10,22 @@ module.exports = {
         return log.info('Error while fetching initial data');
       }
 
+      result[0].is_completed = true;
+
+      var completedItens = result.filter((item) => {
+        return item.is_completed;
+      });
+
+      var percents = (completedItens.length * 100) / result.length;
+
+      var _sharedData = {
+        completedPercentage: percents,
+        todos: result
+      }
+
       res.render('home', {
         title: 'Todo App!',
-        todos: JSON.stringify(result)
+        _sharedData: JSON.stringify(_sharedData),
       });
     });
   },
