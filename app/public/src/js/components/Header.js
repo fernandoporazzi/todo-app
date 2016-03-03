@@ -9,7 +9,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <header className="header section">
-        <CircularProgress strokeWidth="4" radius="55" percentage="30" />
+        <CircularProgress strokeWidth="4" radius="55" percentage={this.props.completedPercentage} />
       </header>
     );
   }

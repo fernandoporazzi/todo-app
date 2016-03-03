@@ -10,6 +10,8 @@ module.exports = {
         return log.info('Error while fetching initial data');
       }
 
+      // this is mocked
+      // Remove after creating the update method
       result[0].is_completed = true;
 
       var completedItens = result.filter((item) => {

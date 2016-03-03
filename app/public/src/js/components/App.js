@@ -6,13 +6,18 @@ import Footer from './Footer';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      completedPercentage: window._sharedData.completedPercentage,
+      todos: window._sharedData.todos
+    };
   }
 
   render() {
     return (
       <div>
-        <Header />
-        <TodoList />
+        <Header completedPercentage={this.state.completedPercentage} />
+        <TodoList todos={this.state.todos} />
         <Footer />
       </div>
     );
