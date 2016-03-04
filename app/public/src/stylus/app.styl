@@ -31,22 +31,40 @@ body
 
 .CircularProgress-Bg,
 .CircularProgress-Fg {
-    fill: none;
+  fill: none;
 }
 
 .CircularProgress-Bg {
-    stroke: #555555;
+  stroke: #555555;
 }
 
 .CircularProgress-Fg {
-    transition: stroke-dashoffset .5s ease-in-out;
-    stroke: #76AD42;
+  transition: stroke-dashoffset .5s ease-in-out;
+  stroke: #76AD42;
 }
 
 .CircularProgress-Text {
-    font-family: sans-serif;
-    font-size: 30px;
-    fill: #76AD42;
-
-    transform: translate(0 50%);
+  font-family: sans-serif;
+  font-size: 30px;
+  fill: #76AD42;
+  transform: translate(0 50%);
 }
+
+.main
+  background #343434
+  float left
+  padding-bottom 10px
+
+.item
+  width 100%
+  float left
+  margin 10px 0 0 0
+
+.item__action
+  float left
+  width 40px
+
+.item__content
+  background #424242
+  float left
+  width 320px
