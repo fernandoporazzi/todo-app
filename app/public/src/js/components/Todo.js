@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 
 export default class Todo extends React.Component {
   constructor(props) {
