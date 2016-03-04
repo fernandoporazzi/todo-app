@@ -1,10 +1,12 @@
 import React from 'react';
+import $ from 'jquery';
 
 export default class Todo extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: this.props.data._id,
       name: this.props.data.name,
       description: this.props.data.description,
       is_completed: this.props.data.is_completed
@@ -12,6 +14,23 @@ export default class Todo extends React.Component {
   }
 
   handleCompleteChange() {
+    fetch('/', {
+      method: 'put',
+      body: `id=${this.state.id}`,
+      headers: {
+        'Content-type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data.todo);
+    })
+    .catch((err) => {
+      console.log('err', err);
+    });
+
     this.setState({is_completed: !this.state.is_completed});
   }
 

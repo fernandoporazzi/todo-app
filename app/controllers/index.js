@@ -10,10 +10,6 @@ module.exports = {
         return log.info('Error while fetching initial data');
       }
 
-      // this is mocked
-      // Remove after creating the update method
-      result[0].is_completed = true;
-
       var completedItens = result.filter((item) => {
         return item.is_completed;
       });
@@ -47,5 +43,24 @@ module.exports = {
 
       res.json({data: 'Item saved!'});
     });
+  },
+
+  update: (req, res) => {
+    ItemModel.findOne({_id: req.body.id}, (err, item) => {
+      if (err) {
+        return res.json({error: true, message: 'Error while retrieveing data to update'});
+      }
+
+      item.is_completed = !item.is_completed;
+
+      item.save((err, result) => {
+        if (err) {
+          return res.json({error: true, message: 'Error while saving data'});
+        }
+
+        return res.json({todo: result});
+      });
+    });
+
   }
 };
