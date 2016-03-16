@@ -37,13 +37,13 @@ export default class Todo extends React.Component {
     return (
       <div className="item">
         <div className="item__action">
-          <label htmlFor="edit">
-            <input type="checkbox" id="edit" />
-          </label>
-          <label htmlFor="done">
+          <label htmlFor="done" className="done">
             <input type="checkbox" id="done" checked={this.state.is_completed} onChange={this.handleCompleteChange.bind(this)} />
           </label>
-          <label htmlFor="delete">
+          <label htmlFor="edit" className="edit">
+            <input type="checkbox" id="edit" />
+          </label>
+          <label htmlFor="delete" className="delete">
             <input type="checkbox" id="delete" />
           </label>
         </div>

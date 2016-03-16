@@ -7,6 +7,10 @@ var paths = {
   stylus: {
     src: ['./app/public/src/stylus/*.styl'],
     dist: './app/public/dist/css'
+  },
+  images: {
+    src: ['./app/public/src/img/**/*.*'],
+    dist: './app/public/dist/img'
   }
 };
 
@@ -26,8 +30,13 @@ gulp.task('webpack:watch', shell.task([
   'npm run webpack:watch'
 ]));
 
-gulp.task('dev', () => {
+gulp.task('images', () => {
+  gulp.src(paths.images.src)
+    .pipe(gulp.dest(paths.images.dist));
+});
+
+gulp.task('dev', ['images'], () => {
   gulp.watch(paths.stylus.src, ['stylus']);
 });
 
-gulp.task('build', ['stylus', 'webpack:build']);
+gulp.task('build', ['stylus', 'images', 'webpack:build']);

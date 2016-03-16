@@ -64,6 +64,27 @@ body
   label
     width 100%
     float left
+    cursor pointer
+
+    &.done
+      &:before
+        position absolute
+        content url('../img/icons/done.svg')
+
+    &.edit
+      &:before
+        position absolute
+        content url('../img/icons/edit.svg')
+
+    &.delete
+      &:before
+        position absolute
+        content url('../img/icons/delete.svg')
+
+    input[type="checkbox"]
+      opacity 0
+      height 30px
+      cursor pointer
 
 .item__content
   background #424242
