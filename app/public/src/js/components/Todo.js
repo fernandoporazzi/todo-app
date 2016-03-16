@@ -25,17 +25,16 @@ export default class Todo extends React.Component {
     })
     .then((data) => {
       console.log(data.todo);
+      this.setState({is_completed: data.todo.is_completed});
     })
     .catch((err) => {
       console.log('err', err);
     });
-
-    this.setState({is_completed: !this.state.is_completed});
   }
 
   render() {
     return (
-      <div className="item">
+      <div className={`item ${this.state.is_completed ? 'item__completed' : 'item__not_completed'}`}>
         <div className="item__action">
           <label htmlFor="done" className="done">
             <input type="checkbox" id="done" checked={this.state.is_completed} onChange={this.handleCompleteChange.bind(this)} />
