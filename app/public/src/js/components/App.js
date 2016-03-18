@@ -14,7 +14,6 @@ export default class App extends React.Component {
   }
 
   updateCompletedPercentage(data) {
-    console.log('updateCompletedPercentage has been called');
     this.setState({completedPercentage: data.completedPercentage});
   }
 
