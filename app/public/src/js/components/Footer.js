@@ -30,8 +30,7 @@ export default class Footer extends React.Component {
 
   handleFilterChange(item, index, event) {
     this.setState({activeFilter: index});
-
-    // Update list
+    this.props.updateFilter(index);
   }
 
   render() {
