@@ -24,8 +24,8 @@ export default class Todo extends React.Component {
       return response.json();
     })
     .then((data) => {
-      console.log(data.todo);
       this.setState({is_completed: data.todo.is_completed});
+      this.props.updateCompletedPercentage({completedPercentage: data.completedPercentage});
     })
     .catch((err) => {
       console.log('err', err);

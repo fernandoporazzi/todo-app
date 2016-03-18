@@ -9,7 +9,7 @@ export default class TodoList extends React.Component {
   render() {
 
     var todos = this.props.todos.map((obj, index) => {
-      return <Todo data={obj} key={index} />
+      return <Todo updateCompletedPercentage={this.props.updateCompletedPercentage} data={obj} key={index} />
     });
 
     return (

@@ -2,19 +2,18 @@
 
 const ItemModel = require('../models/Item.js');
 const log = require('winston');
+const util = require('../utils/todos');
 
 module.exports = {
-  index : (req, res) => {
+  index: (req, res) => {
     ItemModel.find((err, result) => {
+
       if (err != null) {
         return log.info('Error while fetching initial data');
       }
 
-      var completedItens = result.filter((item) => {
-        return item.is_completed;
-      });
-
-      var percents = (completedItens.length * 100) / result.length;
+      var completedItens = util.getCompletedItens(result);
+      var percents = util.getCompletedPercentage(completedItens, result);
 
       var _sharedData = {
         completedPercentage: percents,
@@ -53,12 +52,27 @@ module.exports = {
 
       item.is_completed = !item.is_completed;
 
-      item.save((err, result) => {
+      item.save((err, savedItem) => {
         if (err) {
           return res.json({error: true, message: 'Error while saving data'});
         }
 
-        return res.json({todo: result});
+        ItemModel.find((err, response) => {
+          if (err != null) {
+            return log.info('Error while fetching initial data');
+          }
+
+          var completedItens = util.getCompletedItens(response);
+          var percents = util.getCompletedPercentage(completedItens, response);
+
+          var dataToReturn = {
+            todo: savedItem,
+            todos: response,
+            completedPercentage: percents
+          };
+
+          return res.json(dataToReturn);
+        });
       });
     });
 

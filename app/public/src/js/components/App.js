@@ -13,11 +13,16 @@ export default class App extends React.Component {
     };
   }
 
+  updateCompletedPercentage(data) {
+    console.log('updateCompletedPercentage has been called');
+    this.setState({completedPercentage: data.completedPercentage});
+  }
+
   render() {
     return (
       <div>
         <Header completedPercentage={this.state.completedPercentage} />
-        <TodoList todos={this.state.todos} />
+        <TodoList updateCompletedPercentage={this.updateCompletedPercentage.bind(this)} todos={this.state.todos} />
         <Footer />
       </div>
     );
