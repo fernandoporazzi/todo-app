@@ -8,6 +8,7 @@ module.exports = {
   },
 
   getCompletedPercentage: (completedItens, result) => {
-    return (completedItens.length * 100) / result.length;
+    var percents = (completedItens.length * 100) / result.length;
+    return Math.round(percents * 100) / 100
   }
 };
