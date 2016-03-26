@@ -14,7 +14,7 @@ export default class App extends React.Component {
     };
   }
 
-  updateCompletedPercentage(data) {
+  update(data) {
     this.setState({completedPercentage: data.completedPercentage});
     this.setState({todos: data.todos});
   }
@@ -27,7 +27,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Header todos={this.state.todos} completedPercentage={this.state.completedPercentage} />
-        <TodoList updateCompletedPercentage={this.updateCompletedPercentage.bind(this)} filterType={this.state.filterType} todos={this.state.todos} />
+        <TodoList update={this.update.bind(this)} filterType={this.state.filterType} todos={this.state.todos} />
         <Footer updateFilter={this.updateFilter.bind(this)} />
       </div>
     );

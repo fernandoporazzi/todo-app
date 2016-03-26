@@ -1,4 +1,5 @@
 import React from 'react';
+import Ajax from '../utils/Ajax';
 
 export default class Todo extends React.Component {
   constructor(props) {
@@ -13,22 +14,23 @@ export default class Todo extends React.Component {
   }
 
   handleCompleteChange() {
-    fetch('/', {
-      method: 'put',
-      body: `id=${this.state.id}`,
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded'
-      }
-    })
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      this.setState({is_completed: data.todo.is_completed});
-      this.props.updateCompletedPercentage(data);
-    })
-    .catch((err) => {
-      console.log('err', err);
+    var self = this;
+
+    Ajax.put('/', `id=${this.state.id}&is_completed=${!this.state.is_completed}`, function(data) {
+      self.setState({is_completed: data.todo.is_completed});
+      self.props.update(data);
+    });
+  }
+
+  handleDeleteChange() {
+    var self = this;
+
+    if (this.state.is_completed) {
+      return console.log('you can not delete a completed item');
+    }
+
+    Ajax.delete(`/${this.state.id}`, '', function(data) {
+      self.props.update(data);
     });
   }
 
@@ -40,11 +42,8 @@ export default class Todo extends React.Component {
           <label htmlFor="done" className="done">
             <input type="checkbox" id="done" checked={this.state.is_completed} onChange={this.handleCompleteChange.bind(this)} />
           </label>
-          <label htmlFor="edit" className="edit">
-            <input type="checkbox" id="edit" />
-          </label>
           <label htmlFor="delete" className="delete">
-            <input type="checkbox" id="delete" />
+            <input type="checkbox" id="delete" onChange={this.handleDeleteChange.bind(this)} />
           </label>
         </div>
 
